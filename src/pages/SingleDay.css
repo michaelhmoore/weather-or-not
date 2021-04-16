@@ -1,0 +1,11 @@
+/* .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.cardTitle {
+    background-color: rgb(180, 161, 161);
+    width: auto;
+    overflow: visible;
+}
