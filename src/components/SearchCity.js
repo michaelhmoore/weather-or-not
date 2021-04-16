@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
@@ -7,11 +6,9 @@ import { set5Day, setSearch } from '../redux/actions'
 
 
 export default function SearchCity() {
-    const [searchTerm, setSearchTerm] = useState('')
-    const [searchResults, setSearchResults] = useState([])
+    const [ searchTerm, setSearchTerm ] = useState('')
+    const [ searchResults ] = useState([])
     const dispatch = useDispatch()
-
-    // use redux to setSearch
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -39,7 +36,6 @@ export default function SearchCity() {
         .then(data => {
             data.list.forEach((weather) => {
                 weather.dt_txt = weather.dt_txt.replace(' ', 'T') 
-                console.log(weather.dt_txt)
                 if (weather.weather[0].description.includes('cloud')) {
                     weather.weather[0].icon = 'cloud'
                 } else if (weather.weather[0].description.includes('rain')) {
@@ -51,14 +47,13 @@ export default function SearchCity() {
                 }
             })
             dispatch(set5Day(data))
-
         })
     }
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
     }
-        //todo add: onSubmit={handleSubmit} to form
+
     return (
         <div>
             <Container>
@@ -74,10 +69,7 @@ export default function SearchCity() {
                                     placeholder="Search for city here." 
                                     onChange={handleChange}
                                     />
-                                    <Form.Text style={{marginBottom: "7px"}} className="text-muted">
-                                        Put something else here
-                                    </Form.Text>
-                            <Button as="input" type="submit" value="Search"/>{' '}
+                            <Button style={{margin: '15px'}} as="input" type="submit" value="Search"/>{' '}
                             </Form.Group>
                         </Form>
                     </Col>

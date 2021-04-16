@@ -11,7 +11,6 @@ export default function FiveDay() {
     // fontawesome.library.add(faCheckSquare, faCoffee);
     library.add(faCloud, faSun, faCloudRain)
     const search = useSelector((state) => {
-        console.log(state.search5Day)
         return state.search5Day
     })
 
@@ -29,13 +28,13 @@ export default function FiveDay() {
                 <Row className="justify-content-md-center">
             {search?.list.filter((item, i) => ((i) % 8 === 0)).map((searchResult) => {
                 return (
-                <Card style={{ width: '18rem' }}>
+                <Card key={searchResult.dt} style={{ width: '18rem', margin: '10px' }}>
+                    <Card.Img variant="top" src="../public/cloud.jpg" />
                     <Card.Header>{(new Date(searchResult.dt_txt)).toString().split(' ').splice(0,4).join(' ')}</Card.Header>
                     <Card.Body style={{justifyContent: 'left'}}>
                         <Card.Title>{search.city.name}</Card.Title>
-                        {/* <Card.Subtitle className="mb-2 text-muted">{searchResult.weather.main}</Card.Subtitle> */}
-                        <Card.Text className='text-left'>
-                            <b>Description:</b> {searchResult.weather[0].description + ' '} 
+                        <Card.Text style={{textTransform: 'capitalize'}}>
+                            {searchResult.weather[0].description + ' '} 
                             {searchResult.weather[0].icon &&
                             <FontAwesomeIcon icon={searchResult.weather[0].icon} />
                             }
@@ -46,8 +45,7 @@ export default function FiveDay() {
                         <Card.Text>
                            <b>Low:</b> {kToF(searchResult.main.temp_min) + "°"} <b>High:</b> {kToF(searchResult.main.temp_max) + "°"} 
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
+                        <Card.Link href="#"></Card.Link>
                     </Card.Body>
                 </Card>
                 )

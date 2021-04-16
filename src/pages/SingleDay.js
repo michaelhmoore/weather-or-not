@@ -20,7 +20,7 @@ export default function SingleDay() {
 
     return (
         <div>
-            <h1>Today's Forecast</h1> 
+            <h2>Today's Forecast</h2> 
             {search && (
             <Container className='container' style={{ display: 'flex', justifyContent: 'center'}}>
                 <Card border="primary" style={{ width: '30rem'}}>
@@ -28,7 +28,7 @@ export default function SingleDay() {
                     <Card.Body >
                         <Card.Title >{search?.name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                        <Card.Text style={{textAlign: 'left'}}>
+                        <Card.Text style={{textAlign: 'left', textTransform: 'capitalize'}}>
                             <b>Description:</b> {search?.weather[0].description + ' '}
                             {search.weather[0].icon &&
                                 <FontAwesomeIcon icon={search.weather[0].icon} />
@@ -40,8 +40,6 @@ export default function SingleDay() {
                         <Card.Text style={{textAlign: 'left'}}>
                             <b>Low:</b> {kToF(search?.main.temp_min) + "°"} <b>High:</b> {kToF(search?.main.temp_max) + "°"} 
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
                     </Card.Body>
                 </Card>
             </Container>
