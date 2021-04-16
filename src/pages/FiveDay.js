@@ -31,7 +31,7 @@ export default function FiveDay() {
                 return (
                 <Card style={{ width: '18rem' }}>
                     <Card.Header>{(new Date(searchResult.dt_txt)).toString().split(' ').splice(0,4).join(' ')}</Card.Header>
-                    <Card.Body>
+                    <Card.Body style={{justifyContent: 'left'}}>
                         <Card.Title>{search.city.name}</Card.Title>
                         {/* <Card.Subtitle className="mb-2 text-muted">{searchResult.weather.main}</Card.Subtitle> */}
                         <Card.Text className='text-left'>
@@ -39,9 +39,11 @@ export default function FiveDay() {
                             {searchResult.weather[0].icon &&
                             <FontAwesomeIcon icon={searchResult.weather[0].icon} />
                             }
+                        </Card.Text>
                         <Card.Text>
                             <b>Temperature:</b> {kToF(searchResult.main.temp) + "°"}
                         </Card.Text>
+                        <Card.Text>
                            <b>Low:</b> {kToF(searchResult.main.temp_min) + "°"} <b>High:</b> {kToF(searchResult.main.temp_max) + "°"} 
                         </Card.Text>
                         <Card.Link href="#">Card Link</Card.Link>
