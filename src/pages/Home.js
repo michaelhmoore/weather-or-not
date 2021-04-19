@@ -44,7 +44,6 @@ export default function Home() {
                         }
                     })
                     setCity(data)
-                    console.log(city)
                 })
             }
         })   

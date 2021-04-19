@@ -3,7 +3,6 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import { useDispatch } from 'react-redux'
 import { set5Day, setSearch } from '../redux/actions'
-import bg from '../images/bg.svg'
 
 
 export default function SearchCity() {
