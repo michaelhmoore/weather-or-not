@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import { useDispatch } from 'react-redux'
 import { set5Day, setSearch } from '../redux/actions'
+import bg from '../images/bg.svg'
 
 
 export default function SearchCity() {
@@ -62,7 +63,7 @@ export default function SearchCity() {
                     <h1>{searchResults.name}</h1>
                         <Form onSubmit={handleSubmit}> 
                             <Form.Group controlId="formSearch">
-                                <Form.Label>City Weather Search</Form.Label>
+                                <Form.Label style={{color: 'white'}}>City Weather Search</Form.Label>
                                     <Form.Control 
                                     value = {searchTerm}
                                     type="text" 

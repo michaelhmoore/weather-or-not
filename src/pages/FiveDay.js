@@ -6,9 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import './FiveDay.css'
 
 
+
 export default function FiveDay() {
-    // const [searchResults, setSearchResults] = useState([])
-    // fontawesome.library.add(faCheckSquare, faCoffee);
     library.add(faCloud, faSun, faCloudRain)
     const search = useSelector((state) => {
         return state.search5Day
@@ -19,17 +18,19 @@ export default function FiveDay() {
         return Math.floor(f)
     }
 
-
+    // ternary for font color whether above or below temp., if I have time
+    // after adding backgrounds and dropshadow
+    // style = {{ color :  weather.temp > 60  ?  "red" :  (weather.temp < 45 ? "blue" : "none")}}
+    // weather.temp > 60 ? "red" : "blue"      
 
     return (
         <div>
-            <h2>Five Day Forecast</h2>
+            <h2 style={{color: 'white'}}>Five Day Forecast</h2>
             <Container fluid="xl">
                 <Row className="justify-content-md-center">
             {search?.list.filter((item, i) => ((i) % 8 === 0)).map((searchResult) => {
                 return (
-                <Card key={searchResult.dt} style={{ width: '18rem', margin: '10px' }}>
-                    <Card.Img variant="top" src="../public/cloud.jpg" />
+                <Card border="primary" key={searchResult.dt} style={{ width: '18rem', margin: '10px', boxShadow: '0.3em 0.3em 1em rgba(0,0,0,0.3)' }}>
                     <Card.Header>{(new Date(searchResult.dt_txt)).toString().split(' ').splice(0,4).join(' ')}</Card.Header>
                     <Card.Body style={{justifyContent: 'left'}}>
                         <Card.Title>{search.city.name}</Card.Title>

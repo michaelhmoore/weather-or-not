@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import './SingleDay.css'
 
 
+
 export default function SingleDay() {
     library.add(faCloud, faSun, faCloudRain)
     const search = useSelector((state) => {
@@ -20,24 +21,24 @@ export default function SingleDay() {
 
     return (
         <div>
-            <h2>Today's Forecast</h2> 
+            <h2 style={{color: 'white'}}>Today's Forecast</h2> 
             {search && (
             <Container className='container' style={{ display: 'flex', justifyContent: 'center'}}>
-                <Card border="primary" style={{ width: '30rem'}}>
+                <Card border="primary" style={{ width: '30rem', boxShadow: '0.3em 0.3em 1em rgba(0,0,0,0.3)'}}>
                     <Card.Header>{(new Date()).toString().split(' ').splice(0,4).join(' ')}</Card.Header>
                     <Card.Body >
                         <Card.Title >{search?.name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                        <Card.Text style={{textAlign: 'left', textTransform: 'capitalize'}}>
+                        <Card.Text style={{textAlign: 'center', textTransform: 'capitalize'}}>
                             <b>Description:</b> {search?.weather[0].description + ' '}
                             {search.weather[0].icon &&
                                 <FontAwesomeIcon icon={search.weather[0].icon} />
                             }
                         </Card.Text>
-                        <Card.Text style={{textAlign: 'left'}}>
+                        <Card.Text style={{textAlign: 'center'}}>
                         <b>Temperature:</b> {kToF(search?.main.temp) + "°"}
                         </Card.Text>
-                        <Card.Text style={{textAlign: 'left'}}>
+                        <Card.Text style={{textAlign: 'center'}}>
                             <b>Low:</b> {kToF(search?.main.temp_min) + "°"} <b>High:</b> {kToF(search?.main.temp_max) + "°"} 
                         </Card.Text>
                     </Card.Body>
